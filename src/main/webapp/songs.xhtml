@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>#{albumSongs.album.album_name} songs:</h2>
+    <ol>
+        <ui:repeat value="#{albumSongs.album.songList}" var="songs">
+            <li>
+                <h4>#{songs.song_name}</h4>
+               <!-- <h:link value="#{songs.song_name}"/>-->
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <h:inputText a:placeholder="song_name" value="#{albumSongs.songToCreate.song_name}" required="true" />
+<!--        <h:inputText a:placeholder="album" value="#{albumSongs.songToCreate.album}" required="true" />-->
+<!--        <h:inputText a:placeholder="artist" value="#{albumSongs.songToCreate.album.artist.artist_name}" required="true" />-->
+        <h:commandButton value="Add album song"
+                         actionListener="#{albumSongs.createSong}"
+                         action="#{'songs?faces-redirect=true&amp;albumId='.concat(albumSongs.album.album_id)}">
+<!--            #{'songs?faces-redirect=true&amp;artistId='.concat(albumSongs.album.artist.artist_id)}-->
+            <f:param name="albumId" value="#{albumSongs.album.album_id}" />
+<!--            <f:param name="artistId" value="#{albumSongs.album.artist.artist_id}" />-->
+        </h:commandButton>
+
+    </h:form>
+<!--    <h:link value="Back to albums page" onclick="history.go(-2)"/>-->
+<!--    <h:commandLink onclick="history.go(-1)"/>-->
+<!--    <h:link outcome="albums" value="Back to albums page"/>-->
+</h:body>
+</html>

@@ -14,7 +14,7 @@
 
     <ol>
         <ui:repeat value="#{artists.allArtists}" var="artist">
-            <li><h:link value="#{artist.artist_name}"/> <!-- outcome="artists?artistId=#{artist.artist_id}" /> --></li>
+            <li><h:link value="#{artist.artist_name}" outcome="albums?artistId=#{artist.artist_id}" /> </li>
         </ui:repeat>
     </ol>
 

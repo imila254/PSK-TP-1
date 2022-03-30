@@ -23,8 +23,8 @@ public class Song implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer song_id;
 
-    @Column(name = "ALBUM")
-    private Integer album_id;
+//    @Column(name = "ALBUM")
+//    private Integer album_id;
 
     @Column(name = "ARTIST")
     private Integer artist_id;
@@ -51,11 +51,24 @@ public class Song implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
-        return song_id.equals(song.song_id) && album_id.equals(song.album_id) && artist_id.equals(song.artist_id) && song_name.equals(song.song_name);
+        return Objects.equals(song_id, song.song_id) && Objects.equals(artist_id, song.artist_id) && Objects.equals(song_name, song.song_name) && album.equals(song.album);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(song_id, album_id, artist_id, song_name);
+        return Objects.hash(song_id, artist_id, song_name, album);
     }
+
+    //    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Song song = (Song) o;
+//        return song_id.equals(song.song_id) && album_id.equals(song.album_id) && artist_id.equals(song.artist_id) && song_name.equals(song.song_name);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(song_id, album_id, artist_id, song_name);
+//    }
 }
