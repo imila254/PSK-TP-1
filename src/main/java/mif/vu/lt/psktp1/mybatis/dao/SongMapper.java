@@ -1,6 +1,8 @@
 package mif.vu.lt.psktp1.mybatis.dao;
 
 import java.util.List;
+
+import mif.vu.lt.psktp1.mybatis.model.Artist;
 import mif.vu.lt.psktp1.mybatis.model.Song;
 import org.mybatis.cdi.Mapper;
 
@@ -45,4 +47,6 @@ public interface SongMapper {
      * @mbg.generated Wed Mar 30 17:09:18 EEST 2022
      */
     int updateByPrimaryKey(Song record);
+
+    List<Artist> selectArtistsForSong(Integer id);
 }

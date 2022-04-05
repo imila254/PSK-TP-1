@@ -11,7 +11,17 @@
     <result column="ARTIST" jdbcType="INTEGER" property="artist" />
     <result column="SONG_NAME" jdbcType="VARCHAR" property="songName" />
     <result column="ALBUM_ID" jdbcType="INTEGER" property="albumId" />
+
+    <collection property="artistList" javaType="ArrayList" ofType="mif.vu.lt.psktp1.mybatis.model.Artist" column="ID" select="selectArtistsForSong">
+      <result column="ARTIST_NAME" jdbcType="VARCHAR" property="artistName" />
+    </collection>
   </resultMap>
+
+  <select id="selectArtistsForSong" resultMap="BaseResultMap">
+    select ARTIST.ID, ARTIST.ARTIST_NAME
+    from public.ARTIST
+    where ARTIST.ID = ID AND ID = {id, jdbcType=INTEGER}
+  </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--

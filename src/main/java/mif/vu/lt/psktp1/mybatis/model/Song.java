@@ -1,5 +1,7 @@
 package mif.vu.lt.psktp1.mybatis.model;
 
+import lombok.Getter;
+import lombok.Setter;
 import mif.vu.lt.psktp1.entities.Album;
 import mif.vu.lt.psktp1.entities.Artist;
 
@@ -139,6 +141,9 @@ public class Song {
     }
 
     // Manually added
+    @Getter @Setter
     private Album album;
+
+    @Getter @Setter
     private List<Artist> artistList;
 }
