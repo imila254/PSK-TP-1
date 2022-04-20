@@ -7,8 +7,13 @@ import mif.vu.lt.psktp1.entities.Album;
 import mif.vu.lt.psktp1.entities.Artist;
 import mif.vu.lt.psktp1.persistence.AlbumsDAO;
 import mif.vu.lt.psktp1.persistence.ArtistsDAO;
+import mif.vu.lt.psktp1.qualifiers.AlbumTypeProcessor;
+import mif.vu.lt.psktp1.qualifiers.CD;
+import mif.vu.lt.psktp1.qualifiers.CDAlbumType;
+import mif.vu.lt.psktp1.qualifiers.Vinyl;
 
 import javax.annotation.PostConstruct;
+import javax.enterprise.inject.Any;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -27,6 +32,12 @@ public class ArtistAlbums implements Serializable {
 
     @Inject
     private Message message;
+
+    @Inject @CD
+    AlbumTypeProcessor albumTypeProcessor;
+
+    @Inject @Any
+    private CDAlbumType cdAlbumType;
 
     @Getter @Setter
     private Artist artist;
@@ -49,6 +60,8 @@ public class ArtistAlbums implements Serializable {
         albumToCreate.setAlbum_artist(this.artist.getArtist_name());
         albumsDAO.persist(albumToCreate);
         System.out.println(message.WriteMessage());
+        System.out.println(albumTypeProcessor.AlbumType());
+        System.out.println(cdAlbumType.AlbumType());
     }
 
 }

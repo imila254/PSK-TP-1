@@ -6,6 +6,8 @@ import mif.vu.lt.psktp1.mybatis.model.Artist;
 import mif.vu.lt.psktp1.mybatis.model.Album;
 import mif.vu.lt.psktp1.mybatis.dao.AlbumMapper;
 import mif.vu.lt.psktp1.mybatis.dao.ArtistMapper;
+import mif.vu.lt.psktp1.qualifiers.AlbumTypeProcessor;
+import mif.vu.lt.psktp1.qualifiers.Vinyl;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -23,6 +25,9 @@ public class ArtistAlbumsMyBatis {
 
     @Inject
     AlbumMapper albumMapper;
+
+    @Inject @Vinyl
+    AlbumTypeProcessor albumTypeProcessorVinyl;
 
     @Getter @Setter
     private Artist artist;
@@ -49,6 +54,7 @@ public class ArtistAlbumsMyBatis {
     @Transactional
     public void createAlbum(){
         albumToCreate.setAlbumArtist(this.artist.getArtistName());
+        System.out.println(albumTypeProcessorVinyl.AlbumType());
     }
 
 }
