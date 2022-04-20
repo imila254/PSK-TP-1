@@ -12,4 +12,7 @@
     <interceptors>
         <class>mif.vu.lt.psktp1.interceptors.MethodLogger</class>
     </interceptors>
+    <decorators>
+        <class>mif.vu.lt.psktp1.decorators.DecoratorImpl</class>
+    </decorators>
 </beans>

@@ -2,6 +2,7 @@ package mif.vu.lt.psktp1.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import mif.vu.lt.psktp1.decorators.ArtistDecorator;
 import mif.vu.lt.psktp1.entities.Album;
 import mif.vu.lt.psktp1.entities.Artist;
 import mif.vu.lt.psktp1.entities.Song;
@@ -10,6 +11,7 @@ import mif.vu.lt.psktp1.persistence.ArtistsDAO;
 import mif.vu.lt.psktp1.persistence.SongsDAO;
 
 import javax.annotation.PostConstruct;
+import javax.decorator.Delegate;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -26,6 +28,9 @@ public class AlbumSongs implements Serializable {
 
     @Inject
     private AlbumsDAO albumsDAO;
+
+    @Inject
+    private ArtistDecorator artistDecorator;
 
     @Getter @Setter
     private Album album;
@@ -50,5 +55,6 @@ public class AlbumSongs implements Serializable {
         songToCreate.setAlbum(this.album);
         songToCreate.setArtist_id(this.album.getArtist().getArtist_id());
         songsDAO.persist(songToCreate);
+        System.out.println("Decorator implementation: " + artistDecorator.DecoratedInt(2));
     }
 }
