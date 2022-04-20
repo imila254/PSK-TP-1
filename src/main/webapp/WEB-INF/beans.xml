@@ -9,4 +9,7 @@
     <alternatives>
 <!--        <class>mif.vu.lt.psktp1.alternatives.AltArtistMessage</class>-->
     </alternatives>
+    <interceptors>
+        <class>mif.vu.lt.psktp1.interceptors.MethodLogger</class>
+    </interceptors>
 </beans>

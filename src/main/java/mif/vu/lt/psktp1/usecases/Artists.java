@@ -3,6 +3,7 @@ package mif.vu.lt.psktp1.usecases;
 import lombok.Getter;
 import lombok.Setter;
 import mif.vu.lt.psktp1.entities.Artist;
+import mif.vu.lt.psktp1.interceptors.LoggedInvocation;
 import mif.vu.lt.psktp1.persistence.ArtistsDAO;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +28,7 @@ public class Artists {
     public void init() { loadAllArtists();}
 
     @Transactional
+    @LoggedInvocation
     public void createArtist(){ this.artistsDAO.persist(artistToCreate);}
 
     private void loadAllArtists(){
