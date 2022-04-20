@@ -2,6 +2,7 @@ package mif.vu.lt.psktp1.usecases;
 
 import lombok.Getter;
 import lombok.Setter;
+import mif.vu.lt.psktp1.alternatives.Message;
 import mif.vu.lt.psktp1.entities.Album;
 import mif.vu.lt.psktp1.entities.Artist;
 import mif.vu.lt.psktp1.persistence.AlbumsDAO;
@@ -24,6 +25,9 @@ public class ArtistAlbums implements Serializable {
     @Inject
     private ArtistsDAO artistsDAO;
 
+    @Inject
+    private Message message;
+
     @Getter @Setter
     private Artist artist;
 
@@ -44,6 +48,7 @@ public class ArtistAlbums implements Serializable {
         albumToCreate.setArtist(this.artist);
         albumToCreate.setAlbum_artist(this.artist.getArtist_name());
         albumsDAO.persist(albumToCreate);
+        System.out.println(message.WriteMessage());
     }
 
 }
