@@ -33,12 +33,18 @@ public class Album implements Serializable {
     @Column(name = "SONGS_NUMBER")
     private Integer songs_number;
 
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION", columnDefinition = "integer default 0")
+    private Integer version;
+
     @ManyToOne
     @JoinColumn(name = "ARTIST_ID")
     private Artist artist;
 
     @OneToMany(mappedBy = "album")
     private List<Song> songList = new ArrayList<>();
+
 
     public Album(){
 

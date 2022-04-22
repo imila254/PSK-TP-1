@@ -12,6 +12,7 @@
         <ui:repeat value="#{artistAlbums.artist.albumList}" var="albums">
             <li>
                 <h:link value="#{albums.album_name} #{albums.songs_number}" outcome="songs?albumId=#{albums.album_id}"/>
+                <h:button value="Update" outcome="albumDetails?albumId=#{albums.album_id}"/>
             </li>
         </ui:repeat>
     </ol>

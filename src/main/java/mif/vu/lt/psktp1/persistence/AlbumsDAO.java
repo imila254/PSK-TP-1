@@ -20,4 +20,5 @@ public class AlbumsDAO {
     public List<Album> findAll() {return em.createNamedQuery("Album.findAll",Album.class).getResultList();} //
 
     public Album update(Album album) {return  em.merge(album);}
+
 }
