@@ -49,7 +49,6 @@ public class UpdateAlbumDetails implements Serializable {
         } catch (OptimisticLockException e){
             System.out.println(this.album.getAlbum_id());
             return "/albumDetails.xhtml?faces-redirect=true&albumId=" + this.album.getAlbum_id() + "&error=optimistic-lock-exception";
-            //return "/albumDetails.xhtml?faces-redirect=true&error=optimistic-lock-exception";
         }
         return "albums.xhtml?artistId=" + this.album.getArtist().getArtist_id() + "&faces-redirect=true";
     }
