@@ -7,7 +7,7 @@
         bean-discovery-mode="annotated">
 
     <alternatives>
-<!--        <class>mif.vu.lt.psktp1.alternatives.AltArtistMessage</class>-->
+        <class>mif.vu.lt.psktp1.alternatives.AltArtistMessage</class>
     </alternatives>
     <interceptors>
         <class>mif.vu.lt.psktp1.interceptors.MethodLogger</class>
